@@ -1,34 +1,121 @@
 .header {
     margin: 0 2.5rem;
-    padding: .5rem 0;
+    padding: 0.5rem 0;
     align-items: center;
     display: flex;
-    justify-content:space-between;
-}
-
-.headerLeft, .headerRight {
+    justify-content: space-between;
+    /* border: 0.5px white solid; */
+  }
+  .header:hover{  
+    background-color: #1a1919;
+  }
+  
+  .headerLeft, .headerRight {
     display: flex;
     align-items: center;
-
-}
-
-a > span{
+  }
+  
+  a > span {
     margin: 0 30px;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     cursor: pointer;
-    color: white;
-}
-
-a > span:hover {
-    color: red;
-}
-
-.header__icon {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  a > span:hover {
+    color: #f26d6d; /* A more attractive hover color */
+  
+  }
+  
+  .header__icon {
     width: 80px;
     cursor: pointer;
-}
-
-.user__avatar {
+  }
+  
+  .user__avatar {
     font-size: 2rem;
-}
-
+  }
+  
+  .search-container {
+    position: relative;
+  }
+  
+  .search-input {
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    width: 400px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .search-input:focus {
+    border-color: #61dafb; /* A more vibrant color on focus */
+  }
+  
+  .search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+    cursor: pointer;
+  }
+  
+  .search-icon i {
+    font-size: 20px; /* Larger icon size for a more prominent look */
+  }
+  
+  /* Additional styles for Login and Signup buttons */
+  
+  .headerRight a > span {
+    margin: 0 15px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .headerRight a > span:hover {
+    color: #f26d6d;
+  
+  }
+  
+  .auth-btn-login {
+    display: flex;
+    align-items: center;
+    color: #000000 !important;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 30px;
+    font-size: 1rem !important;
+  }
+  
+  .auth-btn-signup {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 1rem !important;
+  
+  }
+  
+  .auth-btn i {
+    margin-right: 5px;
+    font-size: 1.5rem; /* Larger icon size for a more prominent look */
+  }
+  
+  .auth-btn:hover {
+    color: #f26d6d;
+  }
+  

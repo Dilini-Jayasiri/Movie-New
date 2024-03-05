@@ -6,6 +6,8 @@ import MovieList from "./components/movieList/movieList";
 import Movie from "./pages/movieDetail/movie";
 import AddMovie from "./pages/addmovie/addmovie";
 import EditMovie from "./pages/editmovie/editmovie";
+import Login from "./components/login/Login";
+import SignUp from "./components/SignUp/SignUp";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Route path="/*" element={<h1>Error Page</h1>}></Route>
           <Route path="/addmovie" element={<AddMovie />}></Route>
           <Route path="/update-movie/:id" element={<EditMovie />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/signup" element={<SignUp />}></Route>
         </Routes>
       </Router>
     </div>

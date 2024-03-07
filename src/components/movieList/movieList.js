@@ -4,6 +4,7 @@ import Cards from "../card/card";
 
 const MovieList = () => {
     const [movieList, setMovieList] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
         getData();
@@ -14,20 +15,41 @@ const MovieList = () => {
             .then((res) => res.json())
             .then((data) => {
                 setMovieList(data);
-                console.log(data)
             })
-            
             .catch((error) => {
                 console.error("Error fetching data:", error);
             });
     };
 
+    const handleSearch = (e) => {
+        const term = e.target.value;
+        setSearchTerm(term);
+    };
+
+    // Filter the movieList based on the search term
+    const filteredMovies = movieList.filter(movie =>
+        movie.MovieName.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <div className="movie__list">
             <h2 className="list__title">MOVIES</h2>
+            <div className="search-container">
+                <input
+                    type="text"
+                    placeholder="Search"
+                    onChange={handleSearch}
+                    value={searchTerm}
+                    className="search-input"
+                />
+                <span className="search-icon">
+                    <i className="fa fa-search"></i>
+                </span>
+                <br/>
+            </div>
             <div className="list__cards">
-                {movieList.length > 0 ? (
-                    movieList.map((movie) => (
+                {filteredMovies.length > 0 ? (
+                    filteredMovies.map((movie) => (
                         <Cards key={movie.Id} movie={movie} />
                     ))
                 ) : (

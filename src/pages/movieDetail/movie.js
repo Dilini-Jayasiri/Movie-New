@@ -2,10 +2,26 @@ import React, { useEffect, useState } from "react";
 import "./movie.css";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 const Movie = () => {
   const [currentMovieDetail, setMovie] = useState();
   const { id } = useParams();
+  const [user,setUser] = useState(null);
+
+
+  useEffect(() => {
+    const token = localStorage.getItem(`token`);
+
+    if(token) {
+      const decodedUser = jwtDecode(token);
+      setUser(decodedUser);
+    }else {
+      setUser(null);
+    } getData();
+    window.scrollTo(0,0);
+    
+  }, [id]);
 
   useEffect(() => {
     getData();
@@ -92,7 +108,9 @@ const Movie = () => {
         </div>
       </div>
       <div className="movie__links">
-        <Link to={`/update-movie/${id}`} style={{ textDecoration: "none" }}>
+      {user && user["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] === "1" && (
+          <>
+             <Link to={`/update-movie/${id}`} style={{ textDecoration: "none" }}>
           <p>
             <span className="movie__imdbButton movie__Button">
               Edit Movie <i className="newTab fas fa-external-link-alt"></i>
@@ -106,6 +124,9 @@ const Movie = () => {
             </span>
           </p>
         </a>
+          </>
+        )}
+       
       </div>
     </div>
   );

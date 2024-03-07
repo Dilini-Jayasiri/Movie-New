@@ -53,13 +53,17 @@ function AddMovie() {
     };
     console.log("Submitting form with data:", newMovie);
   
+const token = localStorage.getItem('token');
+console.log(token)
 
   axios.post("https://w9nbvf6p6e.execute-api.us-east-1.amazonaws.com/v1/create-movie", newMovie, {
   withCredentials: false,
   crossDomain: true,
   headers: {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin':'*'
+    'Access-Control-Allow-Origin':'*',
+    Authorization: `${token}`,
+    
     // Add any other headers as needed
   }
 })
@@ -108,6 +112,7 @@ function AddMovie() {
                     autoFocus
                     variant="outlined"
                     name="fname"
+                    required
                     value={movieName}
                     onChange={(e) => setMovieName(e.target.value)}
                     fullWidth
@@ -121,6 +126,7 @@ function AddMovie() {
                     variant="outlined"
                     name="tagline"
                     value={tagline}
+                    required
                     onChange={(e) => setTagline(e.target.value)}
                     fullWidth
                   />
@@ -131,6 +137,7 @@ function AddMovie() {
                     placeholder="Ratings"
                     variant="outlined"
                     name="ratings"
+                    required
                     value={rate}
                     onChange={(e) => setRatings(e.target.value)}
                     fullWidth
@@ -142,6 +149,7 @@ function AddMovie() {
                     placeholder="Number of Votes"
                     variant="outlined"
                     name="phone"
+                    required
                     value={votes}
                     onChange={(e) => setVotes(e.target.value)}
                     fullWidth
@@ -153,6 +161,7 @@ function AddMovie() {
                     placeholder="Minutes"
                     variant="outlined"
                     name="minutes"
+                    required
                     value={minutes}
                     onChange={(e) => setMinutes(e.target.value)}
                     fullWidth
@@ -164,6 +173,7 @@ function AddMovie() {
                     placeholder="Release Date"
                     variant="outlined"
                     name="Release Date"
+                    required
                     value={releasedate}
                     onChange={(e) => setReleasedate(e.target.value)}
                     fullWidth
@@ -187,6 +197,7 @@ function AddMovie() {
                     label="Genre"
                     variant="outlined"
                     name="genre"
+                    required
                     value={genre}
                     onChange={(e) => setGenre(e.target.value)}
                     fullWidth
@@ -217,6 +228,7 @@ function AddMovie() {
                     placeholder="Movie Backdrop URL : /imgurl.jpg "
                     variant="outlined"
                     name="movieBackdrop"
+                    required
                     value={backdropUrl}
                     onChange={(e) => setMovieBackdrop(e.target.value)}
                     fullWidth

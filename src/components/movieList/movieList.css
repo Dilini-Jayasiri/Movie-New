@@ -2,13 +2,105 @@
     padding: 0 3rem 3rem 3rem;
 }
 
-.list__title {
+/* .list__title {
 font-size: 1.75rem;
 margin:  2.5rem;
+} */
+.list__title {
+    font-size: 24px; 
+    color: #fcfcfc; 
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #333; 
+    animation: typing 3s steps(50, end), blink-caret 0.000000000000000000000075s infinite;
+    font-family: 'Great Vibes', cursive; 
+
 }
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width:40%;
+    }
+}
+
+@keyframes blink-caret {
+    from,
+    to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: #333;
+    }
+}
+
+.list__title:hover {
+    animation: none; 
+    color: red;
+}
+
+
 
 .list__cards {
     display: flex;
     flex-wrap: wrap ;
     justify-content: center;
+}
+.search-main-container{
+    display: flex;
+    justify-content: right;
+    /* background-color: white; */
+    width: 91%;
+}
+
+
+.search-container {
+    display: flex;
+    align-items: center;
+    /* position: fixed; */
+    /* top: 2px; */
+    /* left: 200px; */
+    /* background-color: #bf2d2d; */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 2px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* margin: 0% 0% 2% 40% ; */
+    width: 20%;
+    /* margin-bottom: 1%; */
+    justify-content: center;
+    position: relative;
+
+}
+
+/* Style for the search input */
+.search-input {
+    padding: 3px 20px 3px 3px; /* Adjust padding as needed */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Style for the search icon */
+.search-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+/* Optional: Style for the search icon itself */
+.search-icon i {
+    color: #555;
+}
+.row-container {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    justify-content: space-between; /* Add space between title and search box */
+    width: 91%;
+    margin-bottom: 1%;
 }

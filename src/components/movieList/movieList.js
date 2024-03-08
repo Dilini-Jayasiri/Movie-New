@@ -33,7 +33,8 @@ const MovieList = () => {
 
     return (
         <div className="movie__list">
-            <h2 className="list__title">MOVIES</h2>
+            <div className="row-container">
+                <h2 className="list__title">Discover Cinematic Wonders, Where Every Frame Tells a Tale.</h2>
             <div className="search-container">
                 <input
                     type="text"
@@ -46,6 +47,7 @@ const MovieList = () => {
                     <i className="fa fa-search"></i>
                 </span>
                 <br/>
+            </div>
             </div>
             <div className="list__cards">
                 {filteredMovies.length > 0 ? (

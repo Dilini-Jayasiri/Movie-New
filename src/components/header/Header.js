@@ -11,8 +11,16 @@ const Header = () => {
     const token = localStorage.getItem(`token`);
 
     if(token) {
-      const decodedUser = jwtDecode(token);
-      setUser(decodedUser);
+      try {
+        const decodedUser = jwtDecode(token);
+        setUser(decodedUser);
+      } catch (error){
+        console.error("error decoding token: ",error);
+        localStorage.removeItem("user");
+      localStorage.removeItem("token");
+      setUser(null);
+      }
+      
     }else {
       setUser(null);
     }

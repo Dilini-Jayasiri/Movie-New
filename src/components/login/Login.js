@@ -3,10 +3,12 @@ import "./Login.css";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import "core-js/stable/atob";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,8 +50,11 @@ const Login = () => {
           } catch(error){
             console.error("Error decoding token:", error);
           }
-          
-          window.location.reload();
+         // navigate('/');
+         //window.location.reload();
+         navigate('/movies/popular');
+         window.location.reload();
+
         } 
           //const role = localStorage.setItem((decode["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]));
 

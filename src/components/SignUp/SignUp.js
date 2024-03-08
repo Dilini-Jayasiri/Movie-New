@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './SignUp.css';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-import { ControlPointDuplicate } from '@material-ui/icons';
+
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -40,7 +40,7 @@ const SignUp = () => {
       
       // Optionally, you can reset the form fields after successful submission
       //onClear();
-      navigate("/movies/popular");
+      navigate("/login");
     })
     .catch((error) => {
       console.error("Error creating user:", error);

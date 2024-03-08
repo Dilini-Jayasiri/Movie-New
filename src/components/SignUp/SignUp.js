@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import './SignUp.css';
-import axios from "axios";
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -10,48 +9,58 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
 
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!email || !password ||!username ||!confirmPassword) {
-      console.error("Error: email and pw cannot be null");
+
+    if (!email || !password || !username || !confirmPassword) {
+      setError('All fields are required');
       return;
     }
-    const newUser = {
-      username,
-      email,
-      password,
-      confirmPassword
-    };
-    console.log("Submitting form with data:", newUser);
 
-    axios.post("https://w9nbvf6p6e.execute-api.us-east-1.amazonaws.com/v1/user", newUser, {
-      withCredentials: false,
-      crossDomain: true,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin':'*'
-        // Add any other headers as needed
-      }
-    })
-    .then((response) => {
-      console.log("User created:", response.data);
-      
+    try {
+      const newUser = {
+        username,
+        email,
+        password,
+        confirmPassword,
+      };
+
+      const response = await axios.post(
+        'https://w9nbvf6p6e.execute-api.us-east-1.amazonaws.com/v1/user',
+        newUser,
+        {
+          withCredentials: false,
+          crossDomain: true,
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          },
+        }
+      );
+
+      console.log('User created:', response.data);
+
       // Optionally, you can reset the form fields after successful submission
-      //onClear();
-      navigate("/login");
-    })
-    .catch((error) => {
-      console.error("Error creating user:", error);
-    });
+      onClear();
+      navigate('/login');
+    } catch (error) {
+      console.error('Error creating user:', error);
+      if (error.response && error.response.status === 400) {
+        window.alert('Email already exists');
+      } else {
+        window.alert('An error occurred during signup');
       }
+    }
+  };
 
   const onClear = () => {
-       setUserName("");
-       setEmail("");
-       setPassword("");
-       setConfirmPassword("")
+    setUserName('');
+    setEmail('');
+    setPassword('');
+    setConfirmPassword('');
+    setError('');
   };
 
   return (
@@ -59,6 +68,8 @@ const SignUp = () => {
       <div className="auth-form">
         <h2>Sign Up</h2>
         <form onSubmit={handleSubmit}>
+          {error && <div className="error-message">{error}</div>}
+
           <label>Name:</label>
           <input type="text" value={username} onChange={(e) => setUserName(e.target.value)} />
 
@@ -83,4 +94,3 @@ const SignUp = () => {
 };
 
 export default SignUp;
-

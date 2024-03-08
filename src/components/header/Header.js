@@ -46,7 +46,7 @@ const Header = () => {
     <div className="header">
       <div className="headerLeft">
         <Link to="/movies/popular" style={{ textDecoration: "none" }}>
-          <span>Movies</span>
+          <span className="logo-style">Movies</span>
         </Link>
 
         {user && user["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] === "1" &&  (
@@ -60,20 +60,20 @@ const Header = () => {
       <div className="headerRight">
         {user ? (
           <>
-            <span className="username">
-              Hi {user["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"]}  
-              </span>
+            <div className="username">
+              Hi {user["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"]},    
+              </div>
             {/* <button onClick={handleSignOut} style={{ textDecoration: "none" }} className="auth-btn-signup">Sign Out</button> */}
-            <span className="auth-btn-signup" onClick={handleSignOut}>&nbsp;Sign Out</span>
+           <div className="auth-btn-signup auth-btn-signout" onClick={handleSignOut}>&nbsp;SignOut</div>
           </>
         ) : (
           <>
              <Link to="/signup" style={{ textDecoration: "none" }}>
-          <span className="auth-btn-signup">Signup</span>
+          <span className="auth-btn-signup">SignUp</span>
         </Link>
 
         <Link to="/login" style={{ textDecoration: "none" }}>
-          <span className="auth-btn-login">Signin</span>
+          <span className="auth-btn-login">SignIn</span>
         </Link>
           </>
         

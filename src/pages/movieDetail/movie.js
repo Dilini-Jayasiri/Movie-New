@@ -118,11 +118,11 @@ const Movie = () => {
           </p>
         </Link>
         <a href={""} target="_blank" style={{ textDecoration: "none" }}>
-          <p>
+          {/* <p>
             <span className="movie__homeButton movie__Button">
               Delete Movie<i className="newTab fas fa-external-link-alt"></i>
             </span>
-          </p>
+          </p> */}
         </a>
           </>
         )}

@@ -1,11 +1,19 @@
 .header {
-    margin: 0 2.5rem;
+    /* margin: 0 2.5rem; */
     padding: 0.5rem 0;
     align-items: center;
     display: flex;
     justify-content: space-between;
     /* border: 0.5px white solid; */
+    
   }
+  .logo-style {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2em; /* Adjust the font size as needed */
+    color: #fb0000; /* Adjust the font color as needed */
+    /* Add more styles if desired */
+  }
+  
   .header:hover{  
     background-color: #1a1919;
   }
@@ -13,6 +21,9 @@
   .headerLeft, .headerRight {
     display: flex;
     align-items: center;
+  }
+  .headerRight{
+    margin-right: 2%;
   }
   
   a > span {
@@ -107,7 +118,22 @@
     text-decoration: none;
     transition: color 0.3s ease;
     font-size: 1rem !important;
+    /* margin-right: 2%; */
   
+  }
+
+  .auth-btn-signout{
+    display: flex;
+    align-items: center;
+    color: #fdfdfd !important;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    background-color: rgb(149, 54, 54);
+    padding: 3px 8px 3px 3px;
+    border-radius: 30px;
+    font-size: 1rem !important;
+    /* margin-left: 2%; */
   }
   
   .auth-btn i {
@@ -118,4 +144,6 @@
   .auth-btn:hover {
     color: #f26d6d;
   }
-  
+  .username{
+    margin-right: 10px;
+  }

@@ -3,6 +3,7 @@ import './SignUp.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+
 const SignUp = () => {
   const navigate = useNavigate();
   const [username, setUserName] = useState('');
@@ -10,6 +11,8 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
+  
+  
 
   const validatePasswordStrength = (pw) => {
     // Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character
@@ -87,20 +90,28 @@ const SignUp = () => {
           {error && <div className="error-message">{error}</div>}
 
           <label>Name:</label>
-          <input type="text" value={username} onChange={(e) => setUserName(e.target.value)} />
+          <input required type="text" value={username} onChange={(e) => setUserName(e.target.value)} />
 
           <label>Email:</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
 
           <label>Password:</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input required type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <div className="tooltip">Password must be at least 8 characters
+          <br/>contain at least one uppercase letter
+          <br/> one lowercase letter, one number, and one special character</div>
+          
+
 
           <label>Confirm Password:</label>
           <input
+          required
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
+
+          
 
           <button type="submit">Sign Up</button>
         </form>

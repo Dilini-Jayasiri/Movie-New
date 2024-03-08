@@ -64,3 +64,41 @@
   .auth-form button:hover {
     background-color: #1c8cd9;
   }
+
+  /* Style for the tooltip */
+.tooltip {
+  position: absolute;
+  background-color: #ffffff;
+  color: #f10e0e;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+/* Show the tooltip when hovering over the password input */
+input[type="password"]:hover + .tooltip {
+  opacity: 1;
+}
+
+.password-strength-meter {
+  margin-top: 10px;
+  text-align: center;
+}
+
+progress {
+  width: 200px;
+  height: 20px;
+}
+
+/* Style for different strength levels */
+progress[value="0"]::-webkit-progress-value { background-color: #ff5050; }
+progress[value="0"]::-moz-progress-bar { background-color: #ff5050; }
+
+progress[value="50"]::-webkit-progress-value { background-color: #ffa500; }
+progress[value="50"]::-moz-progress-bar { background-color: #ffa500; }
+
+progress[value="100"]::-webkit-progress-value { background-color: #4caf50; }
+progress[value="100"]::-moz-progress-bar { background-color: #4caf50; }

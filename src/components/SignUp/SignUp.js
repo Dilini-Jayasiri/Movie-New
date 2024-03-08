@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import './SignUp.css';
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+import { ControlPointDuplicate } from '@material-ui/icons';
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [username, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -11,6 +14,10 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!email || !password ||!username ||!confirmPassword) {
+      console.error("Error: email and pw cannot be null");
+      return;
+    }
     const newUser = {
       username,
       email,
@@ -30,8 +37,10 @@ const SignUp = () => {
     })
     .then((response) => {
       console.log("User created:", response.data);
+      
       // Optionally, you can reset the form fields after successful submission
-      onClear();
+      //onClear();
+      navigate("/movies/popular");
     })
     .catch((error) => {
       console.error("Error creating user:", error);

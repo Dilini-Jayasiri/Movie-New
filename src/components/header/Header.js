@@ -1,33 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./Header.css";
-import FilteredMovie from "./FilteredMovie";
 import { Link } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
 const Header = () => {
-  const [searchTerm, setSearchTerm] = useState("");
   const [user,setUser] = useState(null);
-  const [movies,setMovies] = useState([]);
-  const [filteredMovies, setFilteredMovies] = useState([]);
-
-  useEffect(() => {
-    fetch("https://w9nbvf6p6e.execute-api.us-east-1.amazonaws.com/v1/get-all-movies")
-      .then((res) => res.json())
-      .then((data) => { 
-        setMovies(data);
-        setFilteredMovies(data); // Assuming the response is an array directly
-
-  });
- }, []);
-
-  function handleSearch(e) {
-    const term = e.target.value;
-    setSearchTerm(term);
-    const filteredMovies = movies.filter(movie =>
-      movie.MovieName.toLowerCase().includes(term.toLowerCase())
-    );
-    setFilteredMovies(filteredMovies); // Update filteredMovies state
-  }
+  
 
   useEffect(() => {
     const token = localStorage.getItem(`token`);
@@ -70,9 +48,6 @@ const Header = () => {
         )}
       </div>
 
-     
-
-      {/* <FilteredMovie movies={filteredMovies}/> */}
 
       <div className="headerRight">
         {user ? (

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Login.css";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
+import "core-js/stable/atob";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -42,7 +43,12 @@ const Login = () => {
           const token = response.data;
 
           localStorage.setItem("token", token);
-          const decode = jwtDecode(token);
+          try {
+            const decode = jwtDecode(token);
+          } catch(error){
+            console.error("Error decoding token:", error);
+          }
+          
           window.location.reload();
         } 
           //const role = localStorage.setItem((decode["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]));

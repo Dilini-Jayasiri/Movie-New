@@ -11,11 +11,27 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
 
+  const validatePasswordStrength = (pw) => {
+    // Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character
+    const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}$/;
+    return strongPasswordRegex.test(pw);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!email || !password || !username || !confirmPassword) {
       setError('All fields are required');
+      return;
+    }
+
+    if (!validatePasswordStrength(password)) {
+      setError('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError('Password and Confirm Password do not match');
       return;
     }
 
